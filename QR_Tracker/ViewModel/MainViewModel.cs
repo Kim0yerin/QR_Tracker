@@ -20,19 +20,20 @@ namespace QR_Tracker.ViewModel
         private object _currentView;
 
         public object CurrentView
-            {
-                get => _currentView;
-                set {  _currentView = value; OnPropertyChanged(); }
-            }
+        {
+            get => _currentView;
+            set {  _currentView = value; OnPropertyChanged(); }
+        }
 
         public MainViewModel()
-            {
-                ShowQrDetectCommand = new RelayCommand(_ => CurrentView = new QrDetectViewModel());
-                ShowReportCommand = new RelayCommand(_ => CurrentView = new ReportViewModel());
+        {
+            ShowQrCreateCommand = new RelayCommand(_ => CurrentView = new QrCreateViewModel());
+            ShowQrDetectCommand = new RelayCommand(_ => CurrentView = new QrDetectViewModel());
+            ShowReportCommand = new RelayCommand(_ => CurrentView = new ReportViewModel());
 
-                // 초기 화면
-                CurrentView = new QrDetectViewModel();
-            }
+            // 초기 화면
+            CurrentView = new QrDetectViewModel();
+        }
 
     }
 }

@@ -59,6 +59,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\QrCreateView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\QrDetectView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -69,11 +73,15 @@
     </Compile>
     <Compile Include="ViewModel\BaseViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\QrCreateViewModel.cs" />
     <Compile Include="ViewModel\QrDetectViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModels\RelayCommand.cs" />
     <Compile Include="ViewModel\ReportViewModel.cs" />
     <Compile Include="View\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\QrCreateView.xaml.cs">
+      <DependentUpon>QrCreateView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\QrDetectView.xaml.cs">
       <DependentUpon>QrDetectView.xaml</DependentUpon>

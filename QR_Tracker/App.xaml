@@ -6,8 +6,23 @@
              xmlns:viewmodels="clr-namespace:QR_Tracker.ViewModel" 
              StartupUri="View/MainView.xaml">
     <Application.Resources>
+        <!--DataTemplate-->
         <DataTemplate DataType="{x:Type viewmodels:QrDetectViewModel}">
             <views:QrDetectView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:QrCreateViewModel}">
+            <views:QrCreateView/>
+        </DataTemplate>
+        
+        <!--Style-->
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Margin" Value="2,3,2,3"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
     </Application.Resources>
 </Application>
