@@ -11,14 +11,7 @@
     </UserControl.Resources>
     <Grid>
         <TextBlock Text="QR 코드를 화면에 인식해주세요." HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Top"></TextBlock>
-        <Button Content="↺" Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center" Command="{Binding CameraRefreshCommand}">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="8"/>
-                </Style>
-            </Button.Resources>
-        </Button>
+        <Button Content="↺" Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center" Command="{Binding CameraRefreshCommand}"/>
         <Image Width="300" Height="300" Source="{Binding ImageSource, UpdateSourceTrigger=PropertyChanged}" Visibility="{Binding IsTimeValid, Converter={StaticResource BoolToVisibilityConverter}}"/>
-        <Label Content="{Binding ValidTimeContent}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,50" Foreground="Red" />
     </Grid>
 </UserControl>

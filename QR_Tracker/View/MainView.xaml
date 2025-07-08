@@ -10,37 +10,23 @@
         <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
     </Window.Resources>
     <DockPanel>
-        <!-- ✅ 상단바 -->
+        <!-- 상단바 -->
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Background="LightGray" Height="50">
             <TextBlock Text="QR 출퇴근 시스템" FontSize="20" VerticalAlignment="Center" Margin="10"/>
+            <ComboBox VerticalAlignment="center">
+                <ComboBoxItem>한국어</ComboBoxItem>
+                <ComboBoxItem>English</ComboBoxItem>
+            </ComboBox>
         </StackPanel>
 
-        <!-- ✅ 좌측 메뉴 -->
+        <!-- 좌측 메뉴 -->
         <StackPanel DockPanel.Dock="Left" Width="150" Background="#EEE">
-            <Button Content="QR 생성" Command="{Binding ShowQrCreateCommand}">
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="8"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
-            <Button Content="QR 찍기" Command="{Binding ShowQrDetectCommand}">
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="8"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
-            <Button Content="리포트" Command="{Binding ShowReportCommand}">
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="8"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
+            <Button Content="QR 생성" Command="{Binding ShowQrCreateCommand}"/>
+            <Button Content="QR 찍기" Command="{Binding ShowQrDetectCommand}"/>
+            <Button Content="리포트" Command="{Binding ShowReportCommand}"/>
         </StackPanel>
 
-        <!-- ✅ 콘텐츠 영역 (여기에 뷰 교체됨) -->
+        <!-- 콘텐츠 영역 (여기에 뷰 교체됨) -->
         <ContentControl Content="{Binding CurrentView}" />
     </DockPanel>
 </Window>
