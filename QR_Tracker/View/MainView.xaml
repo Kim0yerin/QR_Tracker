@@ -1,0 +1,55 @@
+﻿<Window x:Class="QR_Tracker.View.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QR_Tracker.View"
+        mc:Ignorable="d"
+        Title="MainView" Height="450" Width="800">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Margin" Value="2,3,2,3"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    </Window.Resources>
+    <DockPanel>
+        <!-- ✅ 상단바 -->
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Background="LightGray" Height="50">
+            <TextBlock Text="QR 출퇴근 시스템" FontSize="20" VerticalAlignment="Center" Margin="10"/>
+        </StackPanel>
+
+        <!-- ✅ 좌측 메뉴 -->
+        <StackPanel DockPanel.Dock="Left" Width="150" Background="#EEE">
+            <Button Content="QR 생성" Command="{Binding ShowQrCreateCommand}">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="8"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button Content="QR 찍기" Command="{Binding ShowQrDetectCommand}">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="8"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button Content="리포트" Command="{Binding ShowReportCommand}">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="8"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </StackPanel>
+
+        <!-- ✅ 콘텐츠 영역 (여기에 뷰 교체됨) -->
+        <ContentControl Content="{Binding CurrentView}" />
+    </DockPanel>
+</Window>

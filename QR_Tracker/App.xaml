@@ -2,8 +2,12 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:QR_Tracker"
-             StartupUri="View/QrDetectView.xaml">
+             xmlns:views="clr-namespace:QR_Tracker.View"
+             xmlns:viewmodels="clr-namespace:QR_Tracker.ViewModel" 
+             StartupUri="View/MainView.xaml">
     <Application.Resources>
-         
+        <DataTemplate DataType="{x:Type viewmodels:QrDetectViewModel}">
+            <views:QrDetectView/>
+        </DataTemplate>
     </Application.Resources>
 </Application>
