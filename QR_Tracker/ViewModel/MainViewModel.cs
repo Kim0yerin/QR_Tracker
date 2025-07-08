@@ -1,5 +1,4 @@
-﻿using QRtracker.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -7,10 +6,11 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using QR_Tracker.ViewModel.BaseViewModels;
 
 namespace QR_Tracker.ViewModel
 {
-    public class MainViewModel : INotifyPropertyChanged
+    public class MainViewModel : BaseViewModel
     {
         public ICommand ShowQrCreateCommand { get; }
 
@@ -19,18 +19,11 @@ namespace QR_Tracker.ViewModel
 
         private object _currentView;
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
         public object CurrentView
             {
                 get => _currentView;
-                set { _currentView = value; OnPropertyChanged(); }
+                set {  _currentView = value; OnPropertyChanged(); }
             }
-
 
         public MainViewModel()
             {
