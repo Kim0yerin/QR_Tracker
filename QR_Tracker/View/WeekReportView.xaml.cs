@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace QR_Tracker.View
 {
     /// <summary>
-    /// ReportView.xaml에 대한 상호 작용 논리
+    /// UserControl1.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class ReportView : UserControl
+    public partial class WeekReportView : UserControl
     {
-        public ReportView()
+        public WeekReportView()
         {
             InitializeComponent();
         }

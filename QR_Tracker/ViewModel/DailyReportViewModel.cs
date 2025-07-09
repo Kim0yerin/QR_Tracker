@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QR_Tracker.ViewModel
 {
-    internal class ReportViewModel
+    public class DailyReportViewModel
     {
     }
 }

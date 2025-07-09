@@ -13,7 +13,7 @@
         <!-- 상단바 -->
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Background="LightGray" Height="50">
             <TextBlock Text="QR 출퇴근 시스템" FontSize="20" VerticalAlignment="Center" Margin="10"/>
-            <ComboBox VerticalAlignment="center">
+            <ComboBox VerticalAlignment="center" >
                 <ComboBoxItem>한국어</ComboBoxItem>
                 <ComboBoxItem>English</ComboBoxItem>
             </ComboBox>
@@ -24,7 +24,22 @@
             <Button Content="QR 생성" Command="{Binding ShowQrCreateCommand}"/>
             <Button Content="QR 찍기" Command="{Binding ShowQrDetectCommand}"/>
             <Button Content="리포트" Command="{Binding ShowReportCommand}"/>
+            <StackPanel HorizontalAlignment="Right" Visibility="{Binding IsReportMenuVisible, Converter={StaticResource BoolToVisibilityConverter}}">
+                <DockPanel>
+                    <TextBlock Text="┗ " VerticalAlignment="Center"/>
+                    <Button Content="일일 리포트" Command="{Binding ShowDailyReportCommand}" Style="{StaticResource ReportButton}" />
+                </DockPanel>
+                <DockPanel>
+                    <TextBlock Text="┗ " VerticalAlignment="Center"/>
+                    <Button Content="주간 리포트" Command="{Binding ShowWeekReportCommand}" Style="{StaticResource ReportButton}"/>
+                </DockPanel>
+                <DockPanel>
+                    <TextBlock Text="┗ " VerticalAlignment="Center"/>
+                    <Button Content="월간 리포트" Command="{Binding ShowMonthReportCommand}" Style="{StaticResource ReportButton}" />
+                </DockPanel>
+            </StackPanel>
         </StackPanel>
+
 
         <!-- 콘텐츠 영역 (여기에 뷰 교체됨) -->
         <ContentControl Content="{Binding CurrentView}" />
