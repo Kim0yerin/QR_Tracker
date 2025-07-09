@@ -13,14 +13,8 @@
         <DataTemplate DataType="{x:Type viewmodels:QrCreateViewModel}">
             <views:QrCreateView/>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type viewmodels:DailyReportViewModel}">
-            <views:DailyReportView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type viewmodels:WeekReportViewModel}">
-            <views:WeekReportView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type viewmodels:MonthReportViewModel}">
-            <views:MonthReportView/>
+        <DataTemplate DataType="{x:Type viewmodels:ReportViewModel}">
+            <views:ReportView/>
         </DataTemplate>
 
         <!--Style-->
@@ -61,7 +55,7 @@
             </Setter>
         </Style>
         <Style x:Key="ReportButton" TargetType="Button">
-            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Black"/>
             <Setter Property="FontSize" Value="13"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="Background" Value="Transparent"/>

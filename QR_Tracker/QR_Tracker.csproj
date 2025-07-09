@@ -61,22 +61,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ViewModel\MonthReportViewModel.cs" />
-    <Compile Include="ViewModel\WeekReportViewModel.cs" />
-    <Compile Include="View\DailyReportView.xaml.cs">
-      <DependentUpon>DailyReportView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\MonthReportView.xaml.cs">
-      <DependentUpon>MonthReportView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\WeekReportView.xaml.cs">
-      <DependentUpon>WeekReportView.xaml</DependentUpon>
+    <Compile Include="View\ReportView.xaml.cs">
+      <DependentUpon>ReportView.xaml</DependentUpon>
     </Compile>
     <Page Include="View\MainView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\MonthReportView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -97,7 +85,7 @@
     <Compile Include="ViewModel\QrCreateViewModel.cs" />
     <Compile Include="ViewModel\QrDetectViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModels\RelayCommand.cs" />
-    <Compile Include="ViewModel\DailyReportViewModel.cs" />
+    <Compile Include="ViewModel\ReportViewModel.cs" />
     <Compile Include="View\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
@@ -108,11 +96,7 @@
       <DependentUpon>QrDetectView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\DailyReportView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\WeekReportView.xaml">
+    <Page Include="View\ReportView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
