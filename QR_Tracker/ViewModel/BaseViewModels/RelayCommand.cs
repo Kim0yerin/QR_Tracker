@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace QRtracker.ViewModel
+namespace QR_Tracker.ViewModel.BaseViewModels
 {
     public class RelayCommand : ICommand
     {

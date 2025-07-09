@@ -2,8 +2,96 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:QR_Tracker"
-             StartupUri="View/QrDetectView.xaml">
+             xmlns:views="clr-namespace:QR_Tracker.View"
+             xmlns:viewmodels="clr-namespace:QR_Tracker.ViewModel" 
+             StartupUri="View/MainView.xaml">
     <Application.Resources>
-         
+        <!--DataTemplate-->
+        <DataTemplate DataType="{x:Type viewmodels:QrDetectViewModel}">
+            <views:QrDetectView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:QrCreateViewModel}">
+            <views:QrCreateView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:DailyReportViewModel}">
+            <views:DailyReportView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:WeekReportViewModel}">
+            <views:WeekReportView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:MonthReportViewModel}">
+            <views:MonthReportView/>
+        </DataTemplate>
+
+        <!--Style-->
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Margin" Value="2,3,2,3"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <!-- 버튼 모서리 둥글게 -->
+                        <Border x:Name="border" CornerRadius="8" Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              Margin="{TemplateBinding Padding}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <!-- 마우스 오버 -->
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#FFE5E5E5"/>
+                            </Trigger>
+
+                            <!-- 클릭 중 -->
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#FFCCCCCC"/>
+                                <Setter TargetName="border" Property="BorderBrush" Value="#FF888888"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ReportButton" TargetType="Button">
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Margin" Value="0,2,5,0"/>
+            <Setter Property="Width" Value="80"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <!-- 버튼 모서리 둥글게 -->
+                        <Border x:Name="border" CornerRadius="5" 
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="{TemplateBinding Padding}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <!-- 마우스 오버 -->
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#FFE5E5E5"/>
+                            </Trigger>
+
+                            <!-- 클릭 중 -->
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#FFCCCCCC"/>
+                                <Setter TargetName="border" Property="BorderBrush" Value="#FF888888"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Application.Resources>
 </Application>

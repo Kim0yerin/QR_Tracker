@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
+using QR_Tracker.ViewModel;
 
 namespace QR_Tracker.View
 {
-    public partial class QrDetectView : UserControl
+    public partial class MainView : Window
     {
-        public QrDetectView()
+        public MainView()
         {
             InitializeComponent();
+            DataContext = new MainViewModel();
         }
     }
 }

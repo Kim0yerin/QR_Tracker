@@ -15,9 +15,12 @@ using System.Windows.Shapes;
 
 namespace QR_Tracker.View
 {
-    public partial class QrDetectView : UserControl
+    /// <summary>
+    /// MonthReportView.xaml에 대한 상호 작용 논리
+    /// </summary>
+    public partial class MonthReportView : UserControl
     {
-        public QrDetectView()
+        public MonthReportView()
         {
             InitializeComponent();
         }
