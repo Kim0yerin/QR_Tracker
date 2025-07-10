@@ -41,6 +41,9 @@ namespace QR_Tracker.ViewModel
 
                 // 창닫기
                 Application.Current.Windows.OfType<Window>().FirstOrDefault(w => w.Content is AdminLoginView)?.Close();
+
+                // QR 생성 창으로 이동
+                _mainViewModel.CurrentView = new QrCreateViewModel();
             }
         }
 

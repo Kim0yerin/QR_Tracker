@@ -117,6 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AdminId" xml:space="preserve">
+    <value>ID : </value>
+  </data>
+  <data name="AdminModeButton" xml:space="preserve">
+    <value>Admin Mode</value>
+  </data>
+  <data name="AdminModeExitButton" xml:space="preserve">
+    <value>Exit Admin Mode</value>
+  </data>
+  <data name="AdminPw" xml:space="preserve">
+    <value>Password : </value>
+  </data>
   <data name="ChartXTime" xml:space="preserve">
     <value>Time</value>
   </data>
@@ -124,7 +136,7 @@
     <value>Number of Employee</value>
   </data>
   <data name="Create" xml:space="preserve">
-    <value>Create</value>
+    <value>Generate</value>
   </data>
   <data name="DailyReportButton" xml:space="preserve">
     <value>Daily Report</value>
@@ -132,14 +144,20 @@
   <data name="EmployeeNumber" xml:space="preserve">
     <value>Employee ID : </value>
   </data>
+  <data name="LoginButton" xml:space="preserve">
+    <value>Login</value>
+  </data>
   <data name="MonthReportButton" xml:space="preserve">
     <value>Monthly Report</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Name : </value>
   </data>
+  <data name="QrCreateGuide" xml:space="preserve">
+    <value>Enter name and employee number to generate QR code.</value>
+  </data>
   <data name="QrCreateMenu" xml:space="preserve">
-    <value>Create QR</value>
+    <value>Generate QR</value>
   </data>
   <data name="QrDetectGuide" xml:space="preserve">
     <value>Please scan the QR code on the screen.</value>

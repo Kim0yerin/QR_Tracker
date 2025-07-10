@@ -61,6 +61,42 @@ namespace QR_Tracker.Properties {
         }
         
         /// <summary>
+        ///   아이디 : 과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string AdminId {
+            get {
+                return ResourceManager.GetString("AdminId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   관리자 모드과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string AdminModeButton {
+            get {
+                return ResourceManager.GetString("AdminModeButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   관리자 모드 종료과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string AdminModeExitButton {
+            get {
+                return ResourceManager.GetString("AdminModeExitButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   비밀번호 : 과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string AdminPw {
+            get {
+                return ResourceManager.GetString("AdminPw", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   시간과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string ChartXTime {
@@ -106,6 +142,15 @@ namespace QR_Tracker.Properties {
         }
         
         /// <summary>
+        ///   로그인과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string LoginButton {
+            get {
+                return ResourceManager.GetString("LoginButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   월간 리포트과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string MonthReportButton {
@@ -120,6 +165,15 @@ namespace QR_Tracker.Properties {
         internal static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   이름과 사번을 입력하여 QR 코드를 생성하세요.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string QrCreateGuide {
+            get {
+                return ResourceManager.GetString("QrCreateGuide", resourceCulture);
             }
         }
         

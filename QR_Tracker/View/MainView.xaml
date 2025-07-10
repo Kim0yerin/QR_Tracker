@@ -34,8 +34,8 @@
         <!-- 좌측 메뉴 -->
         <DockPanel DockPanel.Dock="Left" Width="150" Background="#EEE">
             <StackPanel DockPanel.Dock="Bottom">
-                <Button Content="관리자 모드" Command="{Binding AdminModeCommand}" Visibility="{Binding IsNotAdminMode, Converter={StaticResource BoolToVisibilityConverter}}"/>
-                <Button Content="관리자 모드 종료" Command="{Binding AdminModeExitCommand}" Visibility="{Binding IsAdminMode, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                <Button Content="{Binding Loc[AdminModeButton]}" Command="{Binding AdminModeCommand}" Visibility="{Binding IsNotAdminMode, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                <Button Content="{Binding Loc[AdminModeExitButton]}" Command="{Binding AdminModeExitCommand}" Visibility="{Binding IsAdminMode, Converter={StaticResource BoolToVisibilityConverter}}"/>
             </StackPanel>
             <StackPanel>
                 <Button Content="{Binding Loc[QrCreateMenu]}" Command="{Binding ShowQrCreateCommand}" Visibility="{Binding IsAdminMode, Converter={StaticResource BoolToVisibilityConverter}}"/>

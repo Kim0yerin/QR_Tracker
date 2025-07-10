@@ -18,14 +18,14 @@
     <Grid>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <DockPanel Margin="5">
-                <Label Content="ID : " />
+                <Label Content="{Binding Loc[AdminId]}" />
                 <TextBox Text="{Binding strAdminId, UpdateSourceTrigger=PropertyChanged}"></TextBox>
             </DockPanel>
             <DockPanel Margin="5" >
-                <Label Content="PassWord : " />
+                <Label Content="{Binding Loc[AdminPw]}" />
                 <PasswordBox x:Name="PasswordBox"/>
             </DockPanel>
-            <Button Content="Login" Margin="0,20,0,0" Command="{Binding AdminLoginCommand}" CommandParameter="{Binding ElementName=PasswordBox}"/>
+            <Button Content="{Binding Loc[LoginButton]}" Margin="0,20,0,0" Command="{Binding AdminLoginCommand}" CommandParameter="{Binding ElementName=PasswordBox}"/>
         </StackPanel>
 
     </Grid>

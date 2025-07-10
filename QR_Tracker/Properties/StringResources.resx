@@ -117,6 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AdminId" xml:space="preserve">
+    <value>아이디 : </value>
+    <comment>관리자 모드 아이디</comment>
+  </data>
+  <data name="AdminModeButton" xml:space="preserve">
+    <value>관리자 모드</value>
+    <comment>관리자 모드 버튼</comment>
+  </data>
+  <data name="AdminModeExitButton" xml:space="preserve">
+    <value>관리자 모드 종료</value>
+    <comment>관리자 모드 종료 버튼</comment>
+  </data>
+  <data name="AdminPw" xml:space="preserve">
+    <value>비밀번호 : </value>
+    <comment>관리자 모드 비밀번호</comment>
+  </data>
   <data name="ChartXTime" xml:space="preserve">
     <value>시간</value>
     <comment>그래프 x축 타이틀</comment>
@@ -137,6 +153,10 @@
     <value>사번 : </value>
     <comment>사번</comment>
   </data>
+  <data name="LoginButton" xml:space="preserve">
+    <value>로그인</value>
+    <comment>관리자 모드 로그인 버튼</comment>
+  </data>
   <data name="MonthReportButton" xml:space="preserve">
     <value>월간 리포트</value>
     <comment>월간 리포트 버튼</comment>
@@ -144,6 +164,10 @@
   <data name="Name" xml:space="preserve">
     <value>이름 : </value>
     <comment>이름</comment>
+  </data>
+  <data name="QrCreateGuide" xml:space="preserve">
+    <value>이름과 사번을 입력하여 QR 코드를 생성하세요.</value>
+    <comment>qr 만들기 창 안내문</comment>
   </data>
   <data name="QrCreateMenu" xml:space="preserve">
     <value>QR 생성</value>
