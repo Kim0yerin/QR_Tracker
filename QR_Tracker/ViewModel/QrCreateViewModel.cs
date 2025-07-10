@@ -1,8 +1,13 @@
 ﻿using LiteDB;
 using QR_Tracker.Model;
+using QR_Tracker.Service;
 using QR_Tracker.Services;
 using QR_Tracker.ViewModel.BaseViewModels;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
@@ -10,6 +15,8 @@ namespace QR_Tracker.ViewModel
 {
     internal class QrCreateViewModel : BaseViewModel
     {
+        public LocalizationManager Loc => LocalizationManager.Instance;
+
         private readonly LiteDbService _dbService = new LiteDbService();
 
         private string _employeeName;
@@ -79,5 +86,6 @@ namespace QR_Tracker.ViewModel
             }
 
         }
+
     }
 }

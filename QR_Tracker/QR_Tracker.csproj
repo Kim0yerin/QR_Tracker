@@ -70,22 +70,29 @@
     <Compile Include="Model\AttendanceLog.cs" />
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Services\LiteDbService.cs" />
-    <Compile Include="ViewModel\MonthReportViewModel.cs" />
-    <Compile Include="ViewModel\WeekReportViewModel.cs" />
-    <Compile Include="View\DailyReportView.xaml.cs">
-      <DependentUpon>DailyReportView.xaml</DependentUpon>
+    <Compile Include="Services\LocalizationManager.cs" />
+    <Compile Include="Properties\StringResources.en.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StringResources.en.resx</DependentUpon>
     </Compile>
-    <Compile Include="View\MonthReportView.xaml.cs">
-      <DependentUpon>MonthReportView.xaml</DependentUpon>
+    <Compile Include="Properties\StringResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StringResources.resx</DependentUpon>
     </Compile>
-    <Compile Include="View\WeekReportView.xaml.cs">
-      <DependentUpon>WeekReportView.xaml</DependentUpon>
+    <Compile Include="ViewModel\AdminLoginViewModel.cs" />
+    <Compile Include="View\AdminLoginView.xaml.cs">
+      <DependentUpon>AdminLoginView.xaml</DependentUpon>
     </Compile>
-    <Page Include="View\MainView.xaml">
+    <Compile Include="View\ReportView.xaml.cs">
+      <DependentUpon>ReportView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="View\AdminLoginView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\MonthReportView.xaml">
+    <Page Include="View\MainView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -106,7 +113,7 @@
     <Compile Include="ViewModel\QrCreateViewModel.cs" />
     <Compile Include="ViewModel\QrDetectViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModels\RelayCommand.cs" />
-    <Compile Include="ViewModel\DailyReportViewModel.cs" />
+    <Compile Include="ViewModel\ReportViewModel.cs" />
     <Compile Include="View\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
@@ -117,11 +124,7 @@
       <DependentUpon>QrDetectView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\DailyReportView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\WeekReportView.xaml">
+    <Page Include="View\ReportView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -143,6 +146,14 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\StringResources.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>StringResources.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\StringResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>StringResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

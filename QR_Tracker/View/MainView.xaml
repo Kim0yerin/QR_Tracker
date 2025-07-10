@@ -11,35 +11,38 @@
     </Window.Resources>
     <DockPanel>
         <!-- 상단바 -->
-        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Background="LightGray" Height="50">
-            <TextBlock Text="QR 출퇴근 시스템" FontSize="20" VerticalAlignment="Center" Margin="10"/>
-            <ComboBox VerticalAlignment="center" >
-                <ComboBoxItem>한국어</ComboBoxItem>
-                <ComboBoxItem>English</ComboBoxItem>
-            </ComboBox>
-        </StackPanel>
+        <Grid DockPanel.Dock="Top" Background="LightGray" Height="50">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <!-- 제목 영역 -->
+                <ColumnDefinition Width="Auto" />
+                <!-- 콤보박스 영역 -->
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="{Binding Loc[QrTrackerTitle]}" 
+               FontSize="20" VerticalAlignment="Center" Margin="10" />
+
+            <ComboBox Grid.Column="1"
+              ItemsSource="{Binding Languages}"
+              SelectedItem="{Binding SelectedLanguage}"
+              Width="100"
+              VerticalAlignment="Center"
+              Margin="10,0,10,0"/>
+        </Grid>
+        
 
         <!-- 좌측 메뉴 -->
-        <StackPanel DockPanel.Dock="Left" Width="150" Background="#EEE">
-            <Button Content="QR 생성" Command="{Binding ShowQrCreateCommand}"/>
-            <Button Content="QR 찍기" Command="{Binding ShowQrDetectCommand}"/>
-            <Button Content="리포트" Command="{Binding ShowReportCommand}"/>
-            <StackPanel HorizontalAlignment="Right" Visibility="{Binding IsReportMenuVisible, Converter={StaticResource BoolToVisibilityConverter}}">
-                <DockPanel>
-                    <TextBlock Text="┗ " VerticalAlignment="Center"/>
-                    <Button Content="일일 리포트" Command="{Binding ShowDailyReportCommand}" Style="{StaticResource ReportButton}" />
-                </DockPanel>
-                <DockPanel>
-                    <TextBlock Text="┗ " VerticalAlignment="Center"/>
-                    <Button Content="주간 리포트" Command="{Binding ShowWeekReportCommand}" Style="{StaticResource ReportButton}"/>
-                </DockPanel>
-                <DockPanel>
-                    <TextBlock Text="┗ " VerticalAlignment="Center"/>
-                    <Button Content="월간 리포트" Command="{Binding ShowMonthReportCommand}" Style="{StaticResource ReportButton}" />
-                </DockPanel>
+        <DockPanel DockPanel.Dock="Left" Width="150" Background="#EEE">
+            <StackPanel DockPanel.Dock="Bottom">
+                <Button Content="{Binding Loc[AdminModeButton]}" Command="{Binding AdminModeCommand}" Visibility="{Binding IsNotAdminMode, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                <Button Content="{Binding Loc[AdminModeExitButton]}" Command="{Binding AdminModeExitCommand}" Visibility="{Binding IsAdminMode, Converter={StaticResource BoolToVisibilityConverter}}"/>
             </StackPanel>
-        </StackPanel>
-
+            <StackPanel>
+                <Button Content="{Binding Loc[QrCreateMenu]}" Command="{Binding ShowQrCreateCommand}" Visibility="{Binding IsAdminMode, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                <Button Content="{Binding Loc[QrDetectMenu]}" Command="{Binding ShowQrDetectCommand}" Visibility="{Binding IsNotAdminMode, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                <Button Content="{Binding Loc[ReportMenu]}" Command="{Binding ShowReportCommand}" Visibility="{Binding IsAdminMode, Converter={StaticResource BoolToVisibilityConverter}}"/>
+            </StackPanel>
+        </DockPanel>
 
         <!-- 콘텐츠 영역 (여기에 뷰 교체됨) -->
         <ContentControl Content="{Binding CurrentView}" />

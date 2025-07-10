@@ -11,20 +11,21 @@
             <Setter Property="Width" Value="150"/>
         </Style>
         <Style TargetType="Label">
-            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontSize" Value="17"/>
         </Style>
     </UserControl.Resources>
     <Grid>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-            <DockPanel Margin="5">
-                <Label Content="이름 : " />
-                <TextBox Text="{Binding EmployeeName, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Text="{Binding Loc[QrCreateGuide]}" FontSize="20"/>
+            <DockPanel Margin="5" HorizontalAlignment="Center">
+                <Label Content="{Binding Loc[Name]}" />
+                <TextBox Text="{Binding EmployeeName, UpdateSourceTrigger=PropertyChanged}"></TextBox>
             </DockPanel>
-            <DockPanel Margin="5">
-                <Label Content="사번 : " />
-                <TextBox Text="{Binding EmployeeNumber, UpdateSourceTrigger=PropertyChanged}"/>
+            <DockPanel Margin="5" HorizontalAlignment="Center">
+                <Label Content="{Binding Loc[EmployeeNumber]}" />
+                <TextBox Text="{Binding EmployeeNumber, UpdateSourceTrigger=PropertyChanged}"></TextBox>
             </DockPanel>
-            <Button Content="QR 생성" Margin="0,20,0,0" Command="{Binding CreateCommand}"/>
+            <Button Content="{Binding Loc[Create]}" Command="{Binding CreateCommand}" Margin="0,20,0,0" Width="150"/>
         </StackPanel>
     </Grid>
 </UserControl>
