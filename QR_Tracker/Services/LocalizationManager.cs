@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace QR_Tracker.Model.Service
+namespace QR_Tracker.Service
 {
     public class LocalizationManager : BaseViewModel
     {

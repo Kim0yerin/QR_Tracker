@@ -1,4 +1,4 @@
-﻿using QR_Tracker.Model.Service;
+﻿using QR_Tracker.Service;
 using QR_Tracker.ViewModel.BaseViewModels;
 using System;
 using System.Collections.Generic;

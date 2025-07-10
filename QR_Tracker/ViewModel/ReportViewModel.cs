@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using QR_Tracker.Model.Service;
+using QR_Tracker.Service;
 using QR_Tracker.ViewModel.BaseViewModels;
 
 namespace QR_Tracker.ViewModel

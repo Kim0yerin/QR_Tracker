@@ -70,12 +70,7 @@
     <Compile Include="Model\AttendanceLog.cs" />
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Services\LiteDbService.cs" />
-    <Compile Include="ViewModel\MonthReportViewModel.cs" />
-    <Compile Include="ViewModel\WeekReportViewModel.cs" />
-    <Compile Include="View\DailyReportView.xaml.cs">
-      <DependentUpon>DailyReportView.xaml</DependentUpon>
-    <Compile Include="Model\Service\LanguageService.cs" />
-    <Compile Include="Model\Service\LocalizationManager.cs" />
+    <Compile Include="Services\LocalizationManager.cs" />
     <Compile Include="Properties\StringResources.en.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
