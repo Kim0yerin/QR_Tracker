@@ -18,13 +18,13 @@
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <DockPanel Margin="5">
                 <Label Content="이름 : " />
-                <TextBox></TextBox>
+                <TextBox Text="{Binding EmployeeName, UpdateSourceTrigger=PropertyChanged}"/>
             </DockPanel>
-            <DockPanel Margin="5" >
+            <DockPanel Margin="5">
                 <Label Content="사번 : " />
-                <TextBox></TextBox>
+                <TextBox Text="{Binding EmployeeNumber, UpdateSourceTrigger=PropertyChanged}"/>
             </DockPanel>
-            <Button Content="QR 생성" Margin="0,20,0,0"/>
+            <Button Content="QR 생성" Margin="0,20,0,0" Command="{Binding CreateCommand}"/>
         </StackPanel>
     </Grid>
 </UserControl>

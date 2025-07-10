@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using QR_Tracker.ViewModel;
 
 namespace QR_Tracker.View
 {
@@ -22,6 +23,7 @@ namespace QR_Tracker.View
         public QrCreateView()
         {
             InitializeComponent();
+            this.DataContext = new QrCreateViewModel();
         }
     }
 }
