@@ -1,4 +1,7 @@
-﻿using System;
+﻿using QR_Tracker.Model.Service;
+using QR_Tracker.View;
+using QR_Tracker.ViewModel.BaseViewModels;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -6,9 +9,8 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
-using QR_Tracker.Model.Service;
-using QR_Tracker.ViewModel.BaseViewModels;
 
 namespace QR_Tracker.ViewModel
 {
@@ -33,28 +35,70 @@ namespace QR_Tracker.ViewModel
                 }
             }
         }
-        public ICommand ShowQrCreateCommand { get; }
-
-        public ICommand ShowQrDetectCommand { get; }
-        public ICommand ShowReportCommand { get; }
+        private bool _isAdminMode;
+        public bool IsAdminMode
+        {
+            get => _isAdminMode;
+            set
+            {
+                if (_isAdminMode != value)
+                {
+                    _isAdminMode = value;
+                    OnPropertyChanged();
+                    OnPropertyChanged(nameof(IsNotAdminMode));
+                }
+            }
+        }
+        public bool IsNotAdminMode => !IsAdminMode;
 
         private object _currentView;
-
         public object CurrentView
         {
             get => _currentView;
             set {  _currentView = value; OnPropertyChanged(); }
         }
 
+        public ICommand AdminModeCommand { get; }
+        public ICommand AdminModeExitCommand { get; }
+        public ICommand ShowQrCreateCommand { get; }
+        public ICommand ShowQrDetectCommand { get; }
+        public ICommand ShowReportCommand { get; }
+
         public MainViewModel()
         {
+            IsAdminMode = false;
             ShowQrCreateCommand = new RelayCommand(_ => CurrentView = new QrCreateViewModel());
             ShowQrDetectCommand = new RelayCommand(_ => CurrentView = new QrDetectViewModel());
             ShowReportCommand = new RelayCommand(_ => CurrentView = new ReportViewModel());
+            AdminModeCommand = new RelayCommand(_ =>
+            {
+                var loginWindow = new Window
+                {
+                    Title = "관리자 로그인",
+                    Content = new AdminLoginView
+                    {
+                        DataContext = new AdminLoginViewModel(this)  // MainViewModel 전달
+                    },
+                    Width = 300,
+                    Height = 200,
+                    WindowStartupLocation = WindowStartupLocation.CenterOwner,
+                    ResizeMode = ResizeMode.NoResize,
+                    Owner = Application.Current.MainWindow
+                };
 
+                loginWindow.ShowDialog();
+            });
+            AdminModeExitCommand = new RelayCommand(AdminModeLogout);
             // 초기 화면
             CurrentView = new QrDetectViewModel();
         }
 
+        private void AdminModeLogout(object param)
+        {
+            IsAdminMode = false;
+            CurrentView = new QrDetectViewModel();
+        }
+
+        
     }
 }

@@ -73,9 +73,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StringResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\AdminLoginViewModel.cs" />
+    <Compile Include="View\AdminLoginView.xaml.cs">
+      <DependentUpon>AdminLoginView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ReportView.xaml.cs">
       <DependentUpon>ReportView.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\AdminLoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

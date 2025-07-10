@@ -16,7 +16,7 @@
         <DataTemplate DataType="{x:Type viewmodels:ReportViewModel}">
             <views:ReportView/>
         </DataTemplate>
-
+       
         <!--Style-->
         <Style TargetType="Button">
             <Setter Property="FontSize" Value="15"/>

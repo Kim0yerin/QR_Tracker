@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:QR_Tracker.View"
         mc:Ignorable="d"
         Title="MainView" Height="450" Width="800">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    </Window.Resources>
     <DockPanel>
         <!-- 상단바 -->
         <Grid DockPanel.Dock="Top" Background="LightGray" Height="50">
@@ -29,11 +32,17 @@
         
 
         <!-- 좌측 메뉴 -->
-        <StackPanel DockPanel.Dock="Left" Width="150" Background="#EEE">
-            <Button Content="{Binding Loc[QrCreateMenu]}" Command="{Binding ShowQrCreateCommand}"/>
-            <Button Content="{Binding Loc[QrDetectMenu]}" Command="{Binding ShowQrDetectCommand}"/>
-            <Button Content="{Binding Loc[ReportMenu]}" Command="{Binding ShowReportCommand}"/>
-        </StackPanel>
+        <DockPanel DockPanel.Dock="Left" Width="150" Background="#EEE">
+            <StackPanel DockPanel.Dock="Bottom">
+                <Button Content="관리자 모드" Command="{Binding AdminModeCommand}" Visibility="{Binding IsNotAdminMode, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                <Button Content="관리자 모드 종료" Command="{Binding AdminModeExitCommand}" Visibility="{Binding IsAdminMode, Converter={StaticResource BoolToVisibilityConverter}}"/>
+            </StackPanel>
+            <StackPanel>
+                <Button Content="{Binding Loc[QrCreateMenu]}" Command="{Binding ShowQrCreateCommand}" Visibility="{Binding IsAdminMode, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                <Button Content="{Binding Loc[QrDetectMenu]}" Command="{Binding ShowQrDetectCommand}" Visibility="{Binding IsNotAdminMode, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                <Button Content="{Binding Loc[ReportMenu]}" Command="{Binding ShowReportCommand}" Visibility="{Binding IsAdminMode, Converter={StaticResource BoolToVisibilityConverter}}"/>
+            </StackPanel>
+        </DockPanel>
 
         <!-- 콘텐츠 영역 (여기에 뷰 교체됨) -->
         <ContentControl Content="{Binding CurrentView}" />
