@@ -1,12 +1,16 @@
-﻿using System;
+﻿using LiteDB;
+using QR_Tracker.Model;
+using QR_Tracker.Services;
+using QR_Tracker.ViewModel.BaseViewModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
-using QR_Tracker.ViewModel.BaseViewModels;
 
 namespace QR_Tracker.ViewModel
 {
@@ -19,6 +23,9 @@ namespace QR_Tracker.ViewModel
         public ICommand ShowDailyReportCommand { get; }
         public ICommand ShowWeekReportCommand { get; }
         public ICommand ShowMonthReportCommand { get; }
+        public string EmployeeName { get; set; }
+        public string EmployeeNumber { get; set; }
+
 
         private object _currentView;
 
@@ -60,5 +67,6 @@ namespace QR_Tracker.ViewModel
                 IsReportMenuVisible = false;
             }
         }
+
     }
 }
