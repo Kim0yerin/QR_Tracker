@@ -8,20 +8,31 @@
         Title="MainView" Height="450" Width="800">
     <DockPanel>
         <!-- 상단바 -->
-        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Background="LightGray" Height="50">
-            <TextBlock Text="QR 출퇴근 시스템" FontSize="20" VerticalAlignment="Center" Margin="10"/>
-            <Grid  Width="580"/>
-            <ComboBox VerticalAlignment="center" Text="언어" >
-                <ComboBoxItem>한국어</ComboBoxItem>
-                <ComboBoxItem>English</ComboBoxItem>
-            </ComboBox>
-        </StackPanel>
+        <Grid DockPanel.Dock="Top" Background="LightGray" Height="50">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <!-- 제목 영역 -->
+                <ColumnDefinition Width="Auto" />
+                <!-- 콤보박스 영역 -->
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="{Binding Loc[QrTrackerTitle]}" 
+               FontSize="20" VerticalAlignment="Center" Margin="10" />
+
+            <ComboBox Grid.Column="1"
+              ItemsSource="{Binding Languages}"
+              SelectedItem="{Binding SelectedLanguage}"
+              Width="100"
+              VerticalAlignment="Center"
+              Margin="10,0,10,0"/>
+        </Grid>
+        
 
         <!-- 좌측 메뉴 -->
         <StackPanel DockPanel.Dock="Left" Width="150" Background="#EEE">
-            <Button Content="QR 생성" Command="{Binding ShowQrCreateCommand}"/>
-            <Button Content="QR 찍기" Command="{Binding ShowQrDetectCommand}"/>
-            <Button Content="리포트" Command="{Binding ShowReportCommand}"/>
+            <Button Content="{Binding Loc[QrCreateMenu]}" Command="{Binding ShowQrCreateCommand}"/>
+            <Button Content="{Binding Loc[QrDetectMenu]}" Command="{Binding ShowQrDetectCommand}"/>
+            <Button Content="{Binding Loc[ReportMenu]}" Command="{Binding ShowReportCommand}"/>
         </StackPanel>
 
         <!-- 콘텐츠 영역 (여기에 뷰 교체됨) -->

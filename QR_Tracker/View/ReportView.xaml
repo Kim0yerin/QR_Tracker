@@ -10,21 +10,21 @@
     <Grid>
         <StackPanel>
             <DockPanel HorizontalAlignment="Right">
-                <Button Content="일일 리포트" Command="{Binding ShowDailyReportCommand}" Style="{StaticResource ReportButton}" />
-                <Button Content="주간 리포트" Command="{Binding ShowWeekReportCommand}" Style="{StaticResource ReportButton}"/>
-                <Button Content="월간 리포트" Command="{Binding ShowMonthReportCommand}" Style="{StaticResource ReportButton}"/>
+                <Button Content="{Binding Loc[DailyReportButton]}" Command="{Binding ShowDailyReportCommand}" Style="{StaticResource ReportButton}" />
+                <Button Content="{Binding Loc[WeekReportButton]}" Command="{Binding ShowWeekReportCommand}" Style="{StaticResource ReportButton}"/>
+                <Button Content="{Binding Loc[MonthReportButton]}" Command="{Binding ShowMonthReportCommand}" Style="{StaticResource ReportButton}"/>
             </DockPanel>
             <TextBlock Margin="10" HorizontalAlignment="Center" FontSize="20" Text="{Binding ChartTitle}"/>
             <lvc:CartesianChart Series="{Binding SeriesData}" LegendLocation="Top">
                 <lvc:CartesianChart.AxisX>
-                    <lvc:Axis Title="시간" Labels="{Binding XLabels}" >
+                    <lvc:Axis Title="{Binding Loc[ChartXTime]}" Labels="{Binding XLabels}" >
                         <lvc:Axis.Separator>
                             <lvc:Separator Step="1"/>
                         </lvc:Axis.Separator>
                     </lvc:Axis>
                 </lvc:CartesianChart.AxisX>
                 <lvc:CartesianChart.AxisY>
-                    <lvc:Axis Title="인원수" Labels="{Binding YValues}"/>
+                    <lvc:Axis Title="{Binding Loc[ChartYEmployeeNum]}" Labels="{Binding YValues}"/>
                 </lvc:CartesianChart.AxisY>
             </lvc:CartesianChart>
         </StackPanel>

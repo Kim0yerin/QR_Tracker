@@ -11,20 +11,20 @@
             <Setter Property="Width" Value="150"/>
         </Style>
         <Style TargetType="Label">
-            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontSize" Value="17"/>
         </Style>
     </UserControl.Resources>
     <Grid>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <DockPanel Margin="5">
-                <Label Content="이름 : " />
+                <Label Content="{Binding Loc[Name]}" />
                 <TextBox></TextBox>
             </DockPanel>
             <DockPanel Margin="5" >
-                <Label Content="사번 : " />
+                <Label Content="{Binding Loc[EmployeeNumber]}" />
                 <TextBox></TextBox>
             </DockPanel>
-            <Button Content="QR 생성" Margin="0,20,0,0"/>
+            <Button Content="{Binding Loc[Create]}" Margin="0,20,0,0"/>
         </StackPanel>
     </Grid>
 </UserControl>
