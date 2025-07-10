@@ -1,4 +1,8 @@
-﻿using QR_Tracker.Model.Service;
+﻿using LiteDB;
+using QR_Tracker.Model;
+using QR_Tracker.Services;
+using QR_Tracker.ViewModel.BaseViewModels;
+using QR_Tracker.Model.Service;
 using QR_Tracker.View;
 using QR_Tracker.ViewModel.BaseViewModels;
 using System;
@@ -98,7 +102,5 @@ namespace QR_Tracker.ViewModel
             IsAdminMode = false;
             CurrentView = new QrDetectViewModel();
         }
-
-        
     }
 }
