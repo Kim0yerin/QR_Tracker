@@ -1,11 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Documents.Serialization;
 using System.Windows.Input;
+using Microsoft.Win32;
+using QR_Tracker.Model;
 using QR_Tracker.Services;
 using QR_Tracker.ViewModel.BaseViewModels;
+using System.IO;
 
 namespace QR_Tracker.ViewModel
 {
@@ -48,6 +54,12 @@ namespace QR_Tracker.ViewModel
             }
         }
         public bool bIsNotTableFormat => !bIsTableFormat;
+        private ObservableCollection<ReportTableItem> _dataGridItem;
+        public ObservableCollection<ReportTableItem> DataGridItem
+        {
+            get => _dataGridItem;
+            set { _dataGridItem = value; OnPropertyChanged(); }
+        }
 
         public ICommand ShowReportCommand { get; }
         public ICommand ExportCSVCommand { get; }
@@ -72,7 +84,40 @@ namespace QR_Tracker.ViewModel
 
         private void ExportCSV(object param) 
         {
+            if (DataGridItem ==null || !DataGridItem.Any())
+            {
+                MessageBox.Show("저장할 데이터가 없습니다.");
+                return;
+            }
 
+            var dialog = new SaveFileDialog
+            {
+                FileName = "report.csv",
+                Filter = "CSV 파일 (*.csv)|*.csv"
+            };
+
+            if (dialog.ShowDialog() == true)
+            {
+                var csvLines = new List<string>();
+
+                var header = "이름, 사번, 날짜, 출근시간, 퇴근시간";
+                csvLines.Add(header);
+
+                foreach (var record in DataGridItem)
+                {
+                    string line = $"{record.Name},{record.EmployeeNumber},{record.Date:yyyy-MM-dd}, {record.CheckInTime:HH:mm:ss}, {record.CheckOutTime:HH:mm:ss}";
+                    csvLines.Add(line);
+                }
+                try
+                {
+                    File.WriteAllLines(dialog.FileName, csvLines, Encoding.UTF8);
+                    MessageBox.Show("CSV 저장이 완료되었습니다.");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"CSV 저장 중 오류 발생 : {ex.Message}");
+                }
+            }
         
         }
 

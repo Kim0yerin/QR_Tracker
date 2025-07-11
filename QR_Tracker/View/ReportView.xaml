@@ -27,7 +27,7 @@
             </DockPanel>
             <!-- 제목 -->
             <TextBlock Margin="10" HorizontalAlignment="Center" FontSize="20" Text="{Binding ChartTitle}"/>
-            <DataGrid ItemsSource="{Binding DataGrid}" Visibility="{Binding bIsTableFormat, Converter={StaticResource BoolToVisibilityConverter}}">
+            <DataGrid ItemsSource="{Binding DataGridItem}" Visibility="{Binding bIsTableFormat, Converter={StaticResource BoolToVisibilityConverter}}">
                 
             </DataGrid>
             <lvc:CartesianChart Series="{Binding SeriesData}" LegendLocation="Top" Visibility="{Binding bIsNotTableFormat, Converter={StaticResource BoolToVisibilityConverter}}">
