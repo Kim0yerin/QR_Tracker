@@ -6,15 +6,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using QR_Tracker.Service;
+using QR_Tracker.Services;
 using QR_Tracker.View;
 using QR_Tracker.ViewModel.BaseViewModels;
+
 
 namespace QR_Tracker.ViewModel
 {
     public class AdminLoginViewModel : BaseViewModel
     {
-        private MainViewModel _mainViewModel;
+        private readonly AdminService _adminService;
+        private readonly MainViewModel _mainViewModel;
         public LocalizationManager Loc => LocalizationManager.Instance;
 
         public string strAdminId { get; set; }
@@ -24,6 +26,7 @@ namespace QR_Tracker.ViewModel
         public AdminLoginViewModel(MainViewModel mainViewModel)
         {
             _mainViewModel = mainViewModel;
+            _adminService = new AdminService();
             AdminLoginCommand = new RelayCommand(AdminLogin);
         }
 
@@ -34,9 +37,10 @@ namespace QR_Tracker.ViewModel
 
             var password = passwordBox.Password;
 
-            if (password == "admin" && strAdminId == "admin")
+            bool bIsValid = _adminService.ValidateLogin(strAdminId, password);
+
+            if (bIsValid)
             {
-                MessageBox.Show("로그인 성공");
                 _mainViewModel.IsAdminMode = true;
 
                 // 창닫기
@@ -45,7 +49,13 @@ namespace QR_Tracker.ViewModel
                 // QR 생성 창으로 이동
                 _mainViewModel.CurrentView = new QrCreateViewModel();
             }
+            else
+            {
+                MessageBox.Show(Loc["LoginFailMessage"], Loc["LoginFailTitle"], MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
+
+
 
     }
 }

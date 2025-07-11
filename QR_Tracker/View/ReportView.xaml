@@ -7,15 +7,31 @@
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
         d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="ComboBox">
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Width" Value="100"/>
+        </Style>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    </UserControl.Resources>
     <Grid>
         <StackPanel>
+            <!--콤보박스-->
             <DockPanel HorizontalAlignment="Right">
-                <Button Content="{Binding Loc[DailyReportButton]}" Command="{Binding ShowDailyReportCommand}" Style="{StaticResource ReportButton}" />
-                <Button Content="{Binding Loc[WeekReportButton]}" Command="{Binding ShowWeekReportCommand}" Style="{StaticResource ReportButton}"/>
-                <Button Content="{Binding Loc[MonthReportButton]}" Command="{Binding ShowMonthReportCommand}" Style="{StaticResource ReportButton}"/>
+                <TextBlock Text="형태 : "/>
+                <ComboBox Margin="0,0,10,0" ItemsSource="{Binding FormatOptions}" SelectedItem="{Binding FormatSelectedItem}">
+                </ComboBox>
+                <TextBlock Text="기간 : "/>
+                <ComboBox ItemsSource="{Binding DayOptions}" SelectedItem="{Binding DaySelectedItem}">
+                </ComboBox>
+                <Button Content="보기" Command="{Binding ShowReportCommand}" Style="{StaticResource ReportButton}" Width="60" Margin="10,0,10,0" />
             </DockPanel>
+            <!-- 제목 -->
             <TextBlock Margin="10" HorizontalAlignment="Center" FontSize="20" Text="{Binding ChartTitle}"/>
-            <lvc:CartesianChart Series="{Binding SeriesData}" LegendLocation="Top">
+            <!-- 표 -->
+            <DataGrid ItemsSource="{Binding DataGridItem}" Visibility="{Binding bIsTableFormat, Converter={StaticResource BoolToVisibilityConverter}}"/>
+            <!-- 그래프 -->
+            <lvc:CartesianChart Series="{Binding SeriesData}" LegendLocation="Top" Visibility="{Binding bIsNotTableFormat, Converter={StaticResource BoolToVisibilityConverter}}">
                 <lvc:CartesianChart.AxisX>
                     <lvc:Axis Title="{Binding Loc[ChartXTime]}" Labels="{Binding XLabels}" >
                         <lvc:Axis.Separator>
@@ -27,6 +43,9 @@
                     <lvc:Axis Title="{Binding Loc[ChartYEmployeeNum]}" Labels="{Binding YValues}"/>
                 </lvc:CartesianChart.AxisY>
             </lvc:CartesianChart>
+            <DockPanel HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                <Button Content="CSV 다운로드" Style="{StaticResource ReportButton}" Command="{Binding ExportCSVCommand}" Visibility="{Binding bIsTableFormat, Converter={StaticResource BoolToVisibilityConverter}}"/>
+            </DockPanel>
         </StackPanel>
     </Grid>
 </UserControl>

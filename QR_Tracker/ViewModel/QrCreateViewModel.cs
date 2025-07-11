@@ -1,7 +1,6 @@
 ﻿using LiteDB;
 using Microsoft.Win32;
 using QR_Tracker.Model;
-using QR_Tracker.Service;
 using QR_Tracker.Services;
 using QR_Tracker.ViewModel.BaseViewModels;
 using System;

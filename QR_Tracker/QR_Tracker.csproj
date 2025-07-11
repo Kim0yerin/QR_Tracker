@@ -101,6 +101,8 @@
     <Compile Include="Model\CameraModel.cs" />
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\QrEncoder.cs" />
+    <Compile Include="Model\ReportTableItem.cs" />
+    <Compile Include="Services\AdminService.cs" />
     <Compile Include="Services\LiteDbService.cs" />
     <Compile Include="Services\LocalizationManager.cs" />
     <Compile Include="Properties\StringResources.en.Designer.cs">
