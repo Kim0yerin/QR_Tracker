@@ -1,15 +1,13 @@
 ﻿using LiteDB;
+using Microsoft.Win32;
 using QR_Tracker.Model;
 using QR_Tracker.Service;
 using QR_Tracker.Services;
 using QR_Tracker.ViewModel.BaseViewModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.IO;
 
 namespace QR_Tracker.ViewModel
 {
@@ -58,7 +56,7 @@ namespace QR_Tracker.ViewModel
             }
 
             // 3. QR 코드 문자열 생성
-            string qrCodeText = $"{EmployeeName}|{EmployeeNumber}";
+            string qrCodeText = $"{EmployeeName}{EmployeeNumber}";
 
             // 4. Employee 객체 생성
             var newEmployee = new Employee
@@ -69,13 +67,40 @@ namespace QR_Tracker.ViewModel
                 QRCode = qrCodeText
             };
 
-            // 5. DB 저장
+            // 5. DB 저장 및 QrCode 저장
+            var dialog = new SaveFileDialog
+            {
+                FileName = qrCodeText,
+                DefaultExt = ".png",
+                Filter = "PNG Image|*.png",
+                InitialDirectory = @"C:\Users\Shin\source\repos\QR_Tracker\QR_Tracker\Model"
+            };
+
+            bool? result = dialog.ShowDialog();
+
+            if (result == true)
+            {
+                string filePath = dialog.FileName;
+
+                try
+                {
+                    QrEncoder.SaveQrCode(qrCodeText, filePath);
+                    MessageBox.Show($"사원이 성공적으로 등록되었습니다.: {qrCodeText}");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"오류 발생: {ex.Message}");
+                }
+            }
+            else
+            {
+                MessageBox.Show($"사원이 등록이 취소되었습니다..");
+            }
+
+
             _dbService.AddEmployee(newEmployee);
 
-            // 6. 완료 메시지
-            MessageBox.Show("사원이 성공적으로 등록되었습니다.");
-
-            // 7. 입력 초기화
+            // 6. 입력 초기화
             EmployeeName = string.Empty;
             EmployeeNumber = string.Empty;
 
