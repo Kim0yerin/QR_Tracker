@@ -151,6 +151,24 @@ namespace QR_Tracker.Properties {
         }
         
         /// <summary>
+        ///   아이디 또는 비밀번호가 잘못되었습니다. 다시 입력해주세요.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string LoginFailMessage {
+            get {
+                return ResourceManager.GetString("LoginFailMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   로그인 실패과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string LoginFailTitle {
+            get {
+                return ResourceManager.GetString("LoginFailTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   월간 리포트과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string MonthReportButton {

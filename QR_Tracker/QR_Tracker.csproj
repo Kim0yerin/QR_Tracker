@@ -70,6 +70,7 @@
     <Compile Include="Model\Admin.cs" />
     <Compile Include="Model\AttendanceLog.cs" />
     <Compile Include="Model\Employee.cs" />
+    <Compile Include="Services\AdminService.cs" />
     <Compile Include="Services\LiteDbService.cs" />
     <Compile Include="Services\LocalizationManager.cs" />
     <Compile Include="Properties\StringResources.en.Designer.cs">

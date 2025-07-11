@@ -157,6 +157,14 @@
     <value>로그인</value>
     <comment>관리자 모드 로그인 버튼</comment>
   </data>
+  <data name="LoginFailMessage" xml:space="preserve">
+    <value>아이디 또는 비밀번호가 잘못되었습니다. 다시 입력해주세요.</value>
+    <comment>로그인 실패 메시지</comment>
+  </data>
+  <data name="LoginFailTitle" xml:space="preserve">
+    <value>로그인 실패</value>
+    <comment>로그인 실패 메시지 타이틀</comment>
+  </data>
   <data name="MonthReportButton" xml:space="preserve">
     <value>월간 리포트</value>
     <comment>월간 리포트 버튼</comment>
