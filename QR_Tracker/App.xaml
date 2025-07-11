@@ -59,8 +59,8 @@
             <Setter Property="FontSize" Value="13"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Height" Value="25"/>
             <Setter Property="Margin" Value="0,2,5,0"/>
-            <Setter Property="Width" Value="80"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">

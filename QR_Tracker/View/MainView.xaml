@@ -14,9 +14,7 @@
         <Grid DockPanel.Dock="Top" Background="LightGray" Height="50">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
-                <!-- 제목 영역 -->
                 <ColumnDefinition Width="Auto" />
-                <!-- 콤보박스 영역 -->
             </Grid.ColumnDefinitions>
 
             <TextBlock Text="{Binding Loc[QrTrackerTitle]}" 

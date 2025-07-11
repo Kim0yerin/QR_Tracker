@@ -12,30 +12,68 @@ namespace QR_Tracker.ViewModel
     public class ReportViewModel : BaseViewModel
     {
         public LocalizationManager Loc => LocalizationManager.Instance;
-        public ICommand ShowDailyReportCommand { get; }
-        public ICommand ShowWeekReportCommand { get; }
-        public ICommand ShowMonthReportCommand { get; }
+        private readonly LiteDbService _dbService = new LiteDbService();
+
+        public List<string> FormatOptions { get; } = new List<string> { "출퇴근 기록표", "시간별 인원수 그래프" };
+        public List<string> DayOptions { get; } = new List<string> { "일간", "주간", "월간" };
+
+        private string _formatSelectedItem = "출퇴근 기록표";
+        public string FormatSelectedItem
+        {
+            get => _formatSelectedItem;
+            set
+            {
+                if (SetProperty(ref _formatSelectedItem, value))
+                {
+                    bIsTableFormat = (_formatSelectedItem == "출퇴근 기록표");
+                }
+            }
+        }
+        private string _daySelectedItem = "일간";
+        public string DaySelectedItem
+        {
+            get => _daySelectedItem;
+            set => SetProperty(ref _daySelectedItem, value);
+        }
+        private bool _bisTableFormat = true;
+        public bool bIsTableFormat
+        {
+            get => _bisTableFormat;
+            set
+            {
+                if (SetProperty(ref _bisTableFormat, value))
+                {
+                    OnPropertyChanged(nameof(bIsNotTableFormat));
+                }
+            }
+        }
+        public bool bIsNotTableFormat => !bIsTableFormat;
+
+        public ICommand ShowReportCommand { get; }
+        public ICommand ExportCSVCommand { get; }
 
         public ReportViewModel()
         {
-            ShowDailyReportCommand = new RelayCommand(DailyReportChart);
-            ShowWeekReportCommand = new RelayCommand(WeekReportChart);
-            ShowMonthReportCommand = new RelayCommand(MonthReportChart);
+            ShowReportCommand = new RelayCommand(ShowReport);
+            ExportCSVCommand = new RelayCommand(ExportCSV);
         }
 
-        private void DailyReportChart(object param)
+        private void ShowReport(object param)
         {
-
+            if (bIsTableFormat)
+            {
+                //datagrid 표시
+            }
+            else
+            {
+                //histogram 표시
+            }
         }
 
-        private void WeekReportChart(object param)
+        private void ExportCSV(object param) 
         {
 
-        }
-
-        private void MonthReportChart(object param)
-        {
-
+        
         }
 
     }
