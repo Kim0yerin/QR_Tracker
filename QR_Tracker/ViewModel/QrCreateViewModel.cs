@@ -5,16 +5,8 @@ using QR_Tracker.Service;
 using QR_Tracker.Services;
 using QR_Tracker.ViewModel.BaseViewModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using Microsoft.Win32;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using QR_Tracker.Model;
 using System.IO;
 
 namespace QR_Tracker.ViewModel

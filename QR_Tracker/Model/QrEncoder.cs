@@ -10,7 +10,7 @@ namespace QR_Tracker.Model
     {
         public static string SaveQrCode(string content, string fullPath)
         {
-            if (string.IsNullOrWhiteSpace(content) || string.IsNullOrWhiteSpace(fullPath))
+            if (string.IsNullOrWhiteSpace(content) || string.IsNullOrWhiteSpace(fullPath)) // IsNullOrWhiteSpace문자열 검사
                 return null;
 
             Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
