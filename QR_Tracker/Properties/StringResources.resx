@@ -143,11 +143,11 @@
   </data>
   <data name="Create" xml:space="preserve">
     <value>생성 </value>
-    <comment>생성 버튼</comment>
+    <comment>QR 생성 버튼</comment>
   </data>
   <data name="DailyReportButton" xml:space="preserve">
     <value>일일 리포트</value>
-    <comment>일일 리포트 버튼</comment>
+    <comment>일간 리포트 버튼</comment>
   </data>
   <data name="EmployeeNumber" xml:space="preserve">
     <value>사번 : </value>
