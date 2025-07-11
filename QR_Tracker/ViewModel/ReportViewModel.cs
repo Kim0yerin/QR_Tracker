@@ -68,6 +68,10 @@ namespace QR_Tracker.ViewModel
         {
             ShowReportCommand = new RelayCommand(ShowReport);
             ExportCSVCommand = new RelayCommand(ExportCSV);
+            DataGridItem = new ObservableCollection<ReportTableItem>();
+            
+            //test용
+            //DataGridItem.Add(new ReportTableItem { Name = "김예린", EmployeeNumber = "P345SG", Date = new DateTime(2025, 7, 1), CheckInTime = new DateTime(2025, 7, 1, 7, 56, 24)});
         }
 
         private void ShowReport(object param)
