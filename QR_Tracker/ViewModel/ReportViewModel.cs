@@ -79,6 +79,7 @@ namespace QR_Tracker.ViewModel
             if (bIsTableFormat)
             {
                 //datagrid 표시
+
             }
             else
             {

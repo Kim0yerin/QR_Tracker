@@ -16,6 +16,7 @@
     </UserControl.Resources>
     <Grid>
         <StackPanel>
+            <!--콤보박스-->
             <DockPanel HorizontalAlignment="Right">
                 <TextBlock Text="형태 : "/>
                 <ComboBox Margin="0,0,10,0" ItemsSource="{Binding FormatOptions}" SelectedItem="{Binding FormatSelectedItem}">
@@ -27,9 +28,9 @@
             </DockPanel>
             <!-- 제목 -->
             <TextBlock Margin="10" HorizontalAlignment="Center" FontSize="20" Text="{Binding ChartTitle}"/>
-            <DataGrid ItemsSource="{Binding DataGridItem}" Visibility="{Binding bIsTableFormat, Converter={StaticResource BoolToVisibilityConverter}}">
-                
-            </DataGrid>
+            <!-- 표 -->
+            <DataGrid ItemsSource="{Binding DataGridItem}" Visibility="{Binding bIsTableFormat, Converter={StaticResource BoolToVisibilityConverter}}"/>
+            <!-- 그래프 -->
             <lvc:CartesianChart Series="{Binding SeriesData}" LegendLocation="Top" Visibility="{Binding bIsNotTableFormat, Converter={StaticResource BoolToVisibilityConverter}}">
                 <lvc:CartesianChart.AxisX>
                     <lvc:Axis Title="{Binding Loc[ChartXTime]}" Labels="{Binding XLabels}" >
