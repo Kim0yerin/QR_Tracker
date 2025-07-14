@@ -19,18 +19,15 @@ namespace QR_Tracker.ViewModel
     public class MainViewModel : BaseViewModel
     {
         public LocalizationManager Loc => LocalizationManager.Instance;
-        public ObservableCollection<string> Languages { get; } = new ObservableCollection<string> { "한국어", "English" };
+        public List<string> Languages { get; } = new List<string> { "한국어", "English" };
         private string _selectedLanguage = "한국어";
         public string SelectedLanguage
         {
             get => _selectedLanguage;
             set
             {
-                if (_selectedLanguage != value)
+                if (SetProperty(ref _selectedLanguage, value))
                 {
-                    _selectedLanguage = value;
-                    OnPropertyChanged(nameof(SelectedLanguage));
-
                     // 언어 변경 처리
                     if (value == "한국어") Loc.ChangeCulture("ko");
                     else if (value == "English") Loc.ChangeCulture("en");
@@ -43,10 +40,8 @@ namespace QR_Tracker.ViewModel
             get => _isAdminMode;
             set
             {
-                if (_isAdminMode != value)
+                if (SetProperty(ref _isAdminMode, value))
                 {
-                    _isAdminMode = value;
-                    OnPropertyChanged();
                     OnPropertyChanged(nameof(IsNotAdminMode));
                 }
             }
@@ -57,7 +52,7 @@ namespace QR_Tracker.ViewModel
         public object CurrentView
         {
             get => _currentView;
-            set {  _currentView = value; OnPropertyChanged(); }
+            set {  SetProperty(ref _currentView, value); }
         }
 
         public ICommand AdminModeCommand { get; }

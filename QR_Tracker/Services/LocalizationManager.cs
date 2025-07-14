@@ -16,6 +16,7 @@ namespace QR_Tracker.Services
     {
         // 싱글톤 = 이 클래스의 인스턴스를 1개만 생성되는 것을 보장 (메모리 낭비 x)
         public static LocalizationManager Instance { get; } = new LocalizationManager();
+        private LocalizationManager() { } // 외부에서 new 불가능하게 막음
         private ResourceManager _resourceManager = StringResources.ResourceManager;
 
         // 바인딩에서 Loc["QrCreate"]처럼 사용할 수 있도록 인덱서 제공

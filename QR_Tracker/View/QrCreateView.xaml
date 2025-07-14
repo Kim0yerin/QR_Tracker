@@ -19,11 +19,11 @@
             <TextBlock Text="{Binding Loc[QrCreateGuide]}" FontSize="20"/>
             <DockPanel Margin="5" HorizontalAlignment="Center">
                 <Label Content="{Binding Loc[Name]}" />
-                <TextBox Text="{Binding EmployeeName, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                <TextBox Text="{Binding EmployeeName}"></TextBox>
             </DockPanel>
             <DockPanel Margin="5" HorizontalAlignment="Center">
                 <Label Content="{Binding Loc[EmployeeNumber]}" />
-                <TextBox Text="{Binding EmployeeNumber, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                <TextBox Text="{Binding EmployeeNumber}"></TextBox>
             </DockPanel>
             <Button Content="{Binding Loc[Create]}" Command="{Binding CreateCommand}" Margin="0,20,0,0" Width="150"/>
         </StackPanel>

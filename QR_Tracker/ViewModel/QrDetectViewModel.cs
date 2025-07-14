@@ -13,7 +13,7 @@ namespace QR_Tracker.ViewModel
 {
     public class QrDetectViewModel : BaseViewModel
     {
-        //public LocalizationManager Loc => LocalizationManager.Instance;
+        public LocalizationManager Loc => LocalizationManager.Instance;
 
         private readonly CameraModel _model; // 클래스 내부에서만 접근, 읽기 전용 필드(readonly field) 생성자에서만 값을 설정
 
