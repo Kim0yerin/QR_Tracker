@@ -66,5 +66,15 @@ namespace QR_Tracker.Services
                 return col.FindAll().ToList();
             }
         }
+
+        // 특정 날짜 범위로 출근 기록 가져오기
+        public List<AttendanceLog> GetLogsBetween(DateTime startDate, DateTime endDate)
+        {
+            using (var db = new LiteDatabase(DB_FILE))
+            {
+                var col = db.GetCollection<AttendanceLog>("logs");
+                return col.Find(x => x.CheckInTime >= startDate && x.CheckInTime < endDate).ToList();
+            }
+        }
     }
 }

@@ -15,37 +15,46 @@
         <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
     </UserControl.Resources>
     <Grid>
-        <StackPanel>
-            <!--콤보박스-->
-            <DockPanel HorizontalAlignment="Right">
-                <TextBlock Text="형태 : "/>
-                <ComboBox Margin="0,0,10,0" ItemsSource="{Binding FormatOptions}" SelectedItem="{Binding FormatSelectedItem}">
-                </ComboBox>
-                <TextBlock Text="기간 : "/>
-                <ComboBox ItemsSource="{Binding DayOptions}" SelectedItem="{Binding DaySelectedItem}">
-                </ComboBox>
-                <Button Content="보기" Command="{Binding ShowReportCommand}" Style="{StaticResource ReportButton}" Width="60" Margin="10,0,10,0" />
-            </DockPanel>
-            <!-- 제목 -->
-            <TextBlock Margin="10" HorizontalAlignment="Center" FontSize="20" Text="{Binding ChartTitle}"/>
-            <!-- 표 -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Row="0">
+            <Grid DockPanel.Dock="Top" VerticalAlignment="Top">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Height="30">
+                    <TextBlock Text="형태 : "/>
+                    <ComboBox Margin="0,0,10,0" ItemsSource="{Binding FormatOptions}" SelectedItem="{Binding FormatSelectedItem}">
+                    </ComboBox>
+                    <TextBlock Text="기간 : "/>
+                    <ComboBox ItemsSource="{Binding DayOptions}" SelectedItem="{Binding DaySelectedItem}">
+                    </ComboBox>
+                    <Button Content="보기" Command="{Binding ShowReportCommand}" Style="{StaticResource ReportButton}" Width="60" Margin="10,0,10,0" />
+                </StackPanel>
+            </Grid>
+            <Grid DockPanel.Dock="Top" VerticalAlignment="Top" >
+                <!--제목-->
+                <TextBlock HorizontalAlignment="Center" FontSize="20" Text="차트 제목"/>
+            </Grid>
+        </DockPanel>
+        <Grid DockPanel.Dock="Top" Grid.Row="1">
+            <!--표-->
             <DataGrid ItemsSource="{Binding DataGridItem}" Visibility="{Binding bIsTableFormat, Converter={StaticResource BoolToVisibilityConverter}}"/>
-            <!-- 그래프 -->
-            <lvc:CartesianChart Series="{Binding SeriesData}" LegendLocation="Top" Visibility="{Binding bIsNotTableFormat, Converter={StaticResource BoolToVisibilityConverter}}">
+            <!--그래프-->
+            <lvc:CartesianChart Series="{Binding SeriesHistogramData}" LegendLocation="Top" Visibility="{Binding bIsNotTableFormat, Converter={StaticResource BoolToVisibilityConverter}}">
                 <lvc:CartesianChart.AxisX>
                     <lvc:Axis Title="{Binding Loc[ChartXTime]}" Labels="{Binding XLabels}" >
-                        <lvc:Axis.Separator>
-                            <lvc:Separator Step="1"/>
-                        </lvc:Axis.Separator>
                     </lvc:Axis>
                 </lvc:CartesianChart.AxisX>
                 <lvc:CartesianChart.AxisY>
                     <lvc:Axis Title="{Binding Loc[ChartYEmployeeNum]}" Labels="{Binding YValues}"/>
                 </lvc:CartesianChart.AxisY>
             </lvc:CartesianChart>
-            <DockPanel HorizontalAlignment="Right" VerticalAlignment="Bottom">
+        </Grid>
+        <DockPanel Grid.Row="2">
+            <Grid DockPanel.Dock="Bottom" VerticalAlignment="Bottom" HorizontalAlignment="Right">
                 <Button Content="CSV 다운로드" Style="{StaticResource ReportButton}" Command="{Binding ExportCSVCommand}" Visibility="{Binding bIsTableFormat, Converter={StaticResource BoolToVisibilityConverter}}"/>
-            </DockPanel>
-        </StackPanel>
+            </Grid>
+        </DockPanel>
     </Grid>
 </UserControl>
