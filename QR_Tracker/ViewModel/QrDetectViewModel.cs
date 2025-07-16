@@ -65,6 +65,9 @@ namespace QR_Tracker.ViewModel
                         string formattedDate = now.ToString("yyyyMMddHH:mm:ss ");
                         string Logtext = formattedDate + DecodedInfo;
 
+                        //test용
+                        MessageBox.Show(DecodedInfo);
+
                         if (fPoints != null && fPoints.Length == 4)
                         {
                             // QR 코드 윤곽선 그리기

@@ -12,6 +12,7 @@ using QR_Tracker.Model;
 using QR_Tracker.Services;
 using QR_Tracker.ViewModel.BaseViewModels;
 using System.IO;
+using Serilog;
 
 namespace QR_Tracker.ViewModel
 {
@@ -71,7 +72,7 @@ namespace QR_Tracker.ViewModel
             DataGridItem = new ObservableCollection<ReportTableItem>();
             
             //test용
-            //DataGridItem.Add(new ReportTableItem { Name = "김예린", EmployeeNumber = "P345SG", Date = new DateTime(2025, 7, 1), CheckInTime = new DateTime(2025, 7, 1, 7, 56, 24)});
+            DataGridItem.Add(new ReportTableItem { Name = "김예린", EmployeeNumber = "P345SG", Date = new DateTime(2025, 7, 1), CheckInTime = new DateTime(2025, 7, 1, 7, 56, 24)});
         }
 
         private void ShowReport(object param)
@@ -91,6 +92,7 @@ namespace QR_Tracker.ViewModel
         {
             if (DataGridItem ==null || !DataGridItem.Any())
             {
+                Log.Warning("CSV 내보내기 시도 - 데이터 없음");
                 MessageBox.Show("저장할 데이터가 없습니다.");
                 return;
             }
@@ -103,8 +105,9 @@ namespace QR_Tracker.ViewModel
 
             if (dialog.ShowDialog() == true)
             {
-                var csvLines = new List<string>();
+                Log.Information("CSV 내보내기 시도 - 경로 : {path}", dialog.FileName);
 
+                var csvLines = new List<string>();
                 var header = "이름, 사번, 날짜, 출근시간, 퇴근시간";
                 csvLines.Add(header);
 
@@ -116,10 +119,12 @@ namespace QR_Tracker.ViewModel
                 try
                 {
                     File.WriteAllLines(dialog.FileName, csvLines, Encoding.UTF8);
+                    Log.Information("CSV 내보내기 성공 - 총 {Count}건", DataGridItem.Count);
                     MessageBox.Show("CSV 저장이 완료되었습니다.");
                 }
                 catch (Exception ex)
                 {
+                    Log.Error(ex, "CSV 내보내기 실패 - 경로: {Path}", dialog.FileName);
                     MessageBox.Show($"CSV 저장 중 오류 발생 : {ex.Message}");
                 }
             }
