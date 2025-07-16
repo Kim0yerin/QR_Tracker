@@ -7,6 +7,7 @@ using System;
 using System.Windows;
 using System.Windows.Input;
 using System.IO;
+using Serilog;
 
 namespace QR_Tracker.ViewModel
 {
@@ -46,10 +47,13 @@ namespace QR_Tracker.ViewModel
                 return;
             }
 
+            Log.Information("직원 등록 및 QR 생성 시도 - 이름 : {EmployeeName}, 사번 : {EmployeeNumber}", EmployeeName, EmployeeNumber);
+
             // 2. 중복 사번 검사
             var existing = _dbService.GetEmployeeByNumber(EmployeeNumber);
             if (existing != null)
             {
+                Log.Warning("직원 등록 및 QR 생성 실패 - 이미 등록된 사원입니다.");
                 MessageBox.Show("이미 등록된 사번입니다.");
                 return;
             }
@@ -83,6 +87,8 @@ namespace QR_Tracker.ViewModel
 
                 try
                 {
+                    _dbService.AddEmployee(newEmployee);
+                    Log.Information("QR 생성 성공 - QR 파일 경로 : {filePath}", filePath);
                     QrEncoder.SaveQrCode(qrCodeText, filePath);
                     MessageBox.Show($"사원이 성공적으로 등록되었습니다.: {qrCodeText}");
                 }
@@ -97,7 +103,7 @@ namespace QR_Tracker.ViewModel
             }
 
 
-            _dbService.AddEmployee(newEmployee);
+
 
             // 6. 입력 초기화
             EmployeeName = string.Empty;

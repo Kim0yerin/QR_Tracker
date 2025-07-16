@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
+using Serilog;
 
 namespace QR_Tracker.Services
 {
@@ -21,10 +22,12 @@ namespace QR_Tracker.Services
                     var col = db.GetCollection<Employee>("employees");
                     col.EnsureIndex(x => x.EmployeeNumber, unique: true);
                     col.Insert(emp);
+                    Log.Information("직원 등록 성공 - 이름 : {EmployeeName}, 사번 : {EmployeeNumber}", emp.EmployeeName, emp.EmployeeNumber);
                 }
             }
             catch (Exception ex)
             {
+                Log.Error(ex,"직원 등록 실패 - 이름 : {EmployeeName}, 사번 : {EmployeeNumber}", emp.EmployeeName, emp.EmployeeNumber);
                 MessageBox.Show("DB 저장 중 오류: " + ex.Message);
             }
         }
